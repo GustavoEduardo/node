@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var router = (0, express_1.Router)();
+var UserController_1 = __importDefault(require("../controllers/UserController"));
+var AddressController_1 = __importDefault(require("../controllers/AddressController"));
+router.get('/usuarios', UserController_1.default.index);
+router.post('/usuarios', UserController_1.default.create);
+router.get('/usuarios/:id', UserController_1.default.findById);
+router.put('/usuarios/:id', UserController_1.default.edit);
+router.delete('/usuarios/:id', UserController_1.default.remove);
+router.get('/enderecos-usuario/:id_endereco_usuario', AddressController_1.default.findById);
+router.get('/enderecos-por-usuario/:id_usuario', AddressController_1.default.findByUserId);
+router.post('/enderecos-usuario', AddressController_1.default.create);
+router.put('/enderecos-usuario/:id_endereco_usuario', AddressController_1.default.edit);
+router.delete('/enderecos-usuario/:id_endereco_usuario', AddressController_1.default.remove);
+exports.default = router;
